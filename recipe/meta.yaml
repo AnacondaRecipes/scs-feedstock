@@ -9,7 +9,7 @@ source:
     sha256: 7592805810fb6da09955dc45322b2d376bca993928c972f472f1a5352821ddcd
   # include submodule (not in github tarball due to dear-github/dear-github#214)
   - git_url: https://github.com/cvxgrp/scs.git
-    git_rev: ac6840a3b3264950e6c300264cbf3937e0bcc6c5
+    git_rev: fa32d873d1812d6b80597a417d8e61a3a224ad50
     folder: scs
 
 build:
