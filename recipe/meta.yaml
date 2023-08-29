@@ -48,9 +48,7 @@ test:
   source_files:
     - test/
   commands:
-    - pytest test/ -v  # [not ppc64le]
-    # NOTE: test suite is skipped on ppc due to bugs in QEMU code that cause
-    # CI to fail, even though the tests should run through on native hardware
+    - pytest test/ -v
     - pip check
 
 about:
