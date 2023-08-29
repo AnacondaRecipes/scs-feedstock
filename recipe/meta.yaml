@@ -44,12 +44,14 @@ test:
     - _scs_indirect
   requires:
     - pytest
+    - pip
   source_files:
     - test/
   commands:
     - pytest test/ -v  # [not ppc64le]
     # NOTE: test suite is skipped on ppc due to bugs in QEMU code that cause
     # CI to fail, even though the tests should run through on native hardware
+    - pip check
 
 about:
   home: https://github.com/bodono/scs-python
