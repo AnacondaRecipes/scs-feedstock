@@ -64,6 +64,7 @@ about:
     and power cone programs (PCPs), or problems with any combination of
     those cones.
   dev_url: https://github.com/bodono/scs-python
+  doc_url: https://www.cvxgrp.org/scs/
 
 extra:
   recipe-maintainers:
