@@ -13,6 +13,7 @@ source:
     folder: scs
 
 build:
+  skip: true  # [py<37]
   number: 0
   script:
     - export BLAS_LAPACK_LIB_PATHS="$PREFIX/lib"    # [unix]
