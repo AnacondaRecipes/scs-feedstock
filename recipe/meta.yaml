@@ -23,7 +23,8 @@ requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - libopenblas
+    - libopenblas  # [not win]
+    - m2w64-openblas  # [win]
     - python
     - setuptools
     - pip
