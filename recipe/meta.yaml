@@ -25,6 +25,7 @@ requirements:
     - m2w64-openblas 0.2.19 # [win]
     - python
     - setuptools
+    - wheel
     - pip
     - numpy
   run:
