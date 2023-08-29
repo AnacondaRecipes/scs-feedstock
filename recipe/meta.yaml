@@ -29,6 +29,7 @@ requirements:
     - numpy
   run:
     - python
+    - mkl  # [linux64 or (osx and x86)]
     - libopenblas
     - {{ pin_compatible('numpy') }}
     - scipy >=0.13.2
