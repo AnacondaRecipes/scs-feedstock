@@ -30,6 +30,8 @@ requirements:
     - numpy
   run:
     - python
+    - libopenblas  # [not win]
+    - m2w64-openblas  # [win]
     - {{ pin_compatible('numpy') }}
     - scipy >=0.13.2
   run_constrained:
