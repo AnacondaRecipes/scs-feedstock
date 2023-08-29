@@ -8,8 +8,7 @@ source:
   - url: https://github.com/bodono/scs-python/archive/refs/tags/{{ version }}.tar.gz
     sha256: 7592805810fb6da09955dc45322b2d376bca993928c972f472f1a5352821ddcd
   # include submodule (not in github tarball due to dear-github/dear-github#214)
-  - git_url: https://github.com/cvxgrp/scs.git
-    git_rev: fa32d873d1812d6b80597a417d8e61a3a224ad50
+  - url: https://github.com/cvxgrp/scs/archive/refs/tags/{{ version }}.tar.gz
     folder: scs
 
 build:
