@@ -10,7 +10,7 @@ source:
   sha256: e3bd779e7e977e3ae5a2f2035aa4c2a309e29082d59a722d5d6592edc4bdb4b3
 
 build:
-  skip: true  # [py<37]
+  skip: true  # [py<37 or win]
   number: 0
   script:
     #- export BLAS_LAPACK_LIB_PATHS="$PREFIX/lib"    # [unix]
@@ -21,8 +21,7 @@ requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - libopenblas 0.3.21 # [not win]
-    - m2w64-openblas 0.2.19 # [win]
+    - libopenblas 0.3.21
     - python
     - setuptools
     - wheel
@@ -30,8 +29,7 @@ requirements:
     - numpy
   run:
     - python
-    - libopenblas  # [not win]
-    - m2w64-openblas  # [win]
+    - libopenblas
     - {{ pin_compatible('numpy') }}
     - scipy >=0.13.2
   run_constrained:
