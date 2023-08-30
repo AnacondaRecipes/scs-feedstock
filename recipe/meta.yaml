@@ -23,7 +23,7 @@ requirements:
     - libopenblas 0.3.21  # [unix]
     - mkl  # [win]
     - python
-    - setuptools
+    - setuptools <65.6.0
     - wheel
     - pip
     - numpy
