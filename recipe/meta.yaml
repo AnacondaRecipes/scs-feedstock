@@ -14,7 +14,7 @@ build:
   number: 0
   script:
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv  # [unix]
-    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv --scs --mkl  # [win]
+    - {{ PYTHON }} -m setup.py install --scs --mkl -vv  # [win]
 
 requirements:
   build:
