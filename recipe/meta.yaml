@@ -10,8 +10,7 @@ source:
   sha256: e3bd779e7e977e3ae5a2f2035aa4c2a309e29082d59a722d5d6592edc4bdb4b3
 
 build:
-  # Windows is missing libopenblas
-  skip: true  # [py<37 or win]
+  skip: true  # [py<37]
   number: 0
   script:
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
@@ -20,7 +19,8 @@ requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - libopenblas 0.3.21
+    - libopenblas 0.3.21  # [unix]
+    - mkl  # [win]
     - python
     - setuptools
     - wheel
@@ -28,8 +28,8 @@ requirements:
     - numpy
   run:
     - python
-    - mkl  # [linux64 or (osx and x86)]
-    - libopenblas
+    - mkl  # [x86]
+    - libopenblas  # [not win]
     - {{ pin_compatible('numpy') }}
     - scipy >=0.13.2
   run_constrained:
