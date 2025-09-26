@@ -10,29 +10,31 @@ source:
   sha256: 388ba6e6d77ac3ded38eb782eafece3df7b56ace2929135760a4bd7b251b6a08
 
 build:
-  number: 0
-  # Windows is missing lapack and blas. 
-  # Substituting mkl isn't supported by the python wrapper.
-  skip: true  # [py<39 or win]
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  number: 1
+  skip: true  # [py<310]
+  script:
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv -Csetup-args=-Dlink_mkl=true  # [blas_impl == "mkl"]
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv  # [blas_impl == 'openblas']
 
 requirements:
   build:
     - {{ stdlib('c') }}
-    - {{ compiler('c') }}
+    - {{ compiler('c') }}  # [not win]
+    # _Complex is not being recognized by MSVC: https://github.com/cython/cython/issues/5512
+    - clang_win-64  # [win]
   host:
     - pip
     - python
+    - pkg-config
     - meson-python
     - ninja-base
-    - openblas {{ openblas }}
+    - mkl-devel {{ mkl }}  # [blas_impl == 'mkl']
+    - openblas-devel {{ openblas }}  # [blas_impl == 'openblas']
     - numpy {{ numpy }}
-    - scipy
   run:
     - python
-    - openblas
-    - {{ pin_compatible('numpy') }}
-    - scipy >=0.13.2
+    - numpy
+    - scipy
   run_constrained:
     # avoid installing incompatible cvxpy
     - cvxpy >1.1.15
@@ -62,7 +64,7 @@ about:
     and power cone programs (PCPs), or problems with any combination
     of those cones.
   dev_url: https://github.com/bodono/scs-python
-  doc_url: https://www.cvxgrp.org/scs/
+  doc_url: https://www.cvxgrp.org/scs
 
 extra:
   recipe-maintainers:
