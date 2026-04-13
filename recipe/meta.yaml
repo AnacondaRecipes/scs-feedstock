@@ -10,7 +10,7 @@ source:
   sha256: 388ba6e6d77ac3ded38eb782eafece3df7b56ace2929135760a4bd7b251b6a08
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<310]
   script:
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv -Csetup-args=-Dlink_mkl=true  # [blas_impl == "mkl"]
@@ -19,9 +19,7 @@ build:
 requirements:
   build:
     - {{ stdlib('c') }}
-    - {{ compiler('c') }}  # [not win]
-    # _Complex is not being recognized by MSVC: https://github.com/cython/cython/issues/5512
-    - clang_win-64  # [win]
+    - {{ compiler('c') }}
   host:
     - pip
     - python
