@@ -3,3 +3,4 @@ channels:
   - https://staging.continuum.io/pbp/fs/numpy-feedstock/pr133/63a47e9
   - https://staging.continuum.io/pbp/fs/dsdp-feedstock/pr6/3f4f01b
   - https://staging.continuum.io/pbp/fs/cvxopt-feedstock/pr13/0934250
+  - https://staging.continuum.io/pbp/fs/scipy-feedstock/pr56/9cededa
