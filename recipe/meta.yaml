@@ -1,5 +1,5 @@
 {% set name = "scs" %}
-{% set version = "3.2.8" %}
+{% set version = "3.2.11" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 388ba6e6d77ac3ded38eb782eafece3df7b56ace2929135760a4bd7b251b6a08
+  sha256: 2a5455cf2093d07f84f2f848c199faed52e79cdb3a11fe250b5622b6bbac4913
 
 build:
-  number: 2
+  number: 0
   skip: true  # [py<310]
   script:
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv -Csetup-args=-Dlink_mkl=true  # [blas_impl == "mkl"]
-    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv  # [blas_impl == 'openblas']
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv                               # [blas_impl == 'openblas']
 
 requirements:
   build:
@@ -26,7 +26,7 @@ requirements:
     - pkg-config
     - meson-python
     - ninja-base
-    - mkl-devel {{ mkl }}  # [blas_impl == 'mkl']
+    - mkl-devel {{ mkl }}            # [blas_impl == 'mkl']
     - openblas-devel {{ openblas }}  # [blas_impl == 'openblas']
     - numpy {{ numpy }}
   run:
